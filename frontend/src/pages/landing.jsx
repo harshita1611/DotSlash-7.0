@@ -4,8 +4,8 @@ function Landing() {
     return(
         <>
     <Navbar/>
-      <div className="bg-slate-50 bg-opacity-20 flex w-full flex-col justify-center items-center px-16 py-12 max-md:max-w-full max-md:px-5">
-        <div className="flex w-full max-w-[941px] flex-col items-center mt-5 mb-9 max-md:max-w-full">
+      <div className="bg-slate-50 bg-opacity-20 flex w-full flex-col justify-center items-center px-16 py-12 max-md:max-w-full max-md:px-5 overflow-y-hidden">
+        <div className="flex w-full max-w-[941px] flex-col items-center mb-9 max-md:max-w-full">
           <img
             loading="lazy"
             srcSet="src\assets\landing_img.jpeg" className="aspect-[2.08] object-contain object-center w-[394px] max-w-full"
