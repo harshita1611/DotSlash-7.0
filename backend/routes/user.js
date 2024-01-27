@@ -51,4 +51,5 @@ app.get("/dashboard", (req, res) => {
     res.status(200).json({ topGainers: topGainerList, topLosers: topLoserList });
 })
 
+
 module.exports = app;
