@@ -47,17 +47,16 @@ function Predictor() {
                 <button type="submit">Submit</button>
             </form>
             {prediction !== null && (
-                <div>
-                    <h2>Prediction:</h2>
-                    <p>Action: {prediction.Action}</p>
-                    <p>Current Stock Price: {prediction["Current Stock Price"]}</p>
-                    <p>Predicted Stock Price: {prediction["Predicted Stock Price"]}</p>
-                    <p>Accuracy Score: {prediction["Accuracy Score"]}</p>
-                    <p>Mean Squared Error: {prediction["Mean Squared Error"]}</p>
-                </div>
-            )}
+            <div>
+                <h2>Prediction:</h2>
+                <p>Action: {prediction.Action}</p>
+                <p>Current Stock Price: {prediction["Current Stock Price"]}</p>
+                <p>Predicted Stock Price: {prediction["Predicted Stock Price"]}</p>
+                <p>Accuracy Score: {prediction["Accuracy Score"]}</p>
+                <p>Mean Squared Error: {prediction["Mean Squared Error"]}</p>
+            </div>
+)}
 
-            {error && <p>Error: {error}</p>}
         </div>
     );
 

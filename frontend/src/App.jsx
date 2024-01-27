@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/newsAndAi" element={<NewsAndAi />} />
+          <Route path="/news" element={<NewsAndAi />} />
           <Route path="/predictor" element={<Predictor/>} />
         </Routes>
       </Router>
