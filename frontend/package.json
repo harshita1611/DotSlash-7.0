@@ -10,6 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@canvasjs/charts": "^3.7.35",
+    "@canvasjs/react-charts": "^1.0.0",
+    "@canvasjs/react-stockcharts": "^1.0.0",
+    "@canvasjs/stockcharts": "^1.7.35",
+    "canvasjs-react-charts": "^1.0.5",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
