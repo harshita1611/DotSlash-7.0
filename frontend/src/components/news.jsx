@@ -1,9 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function News() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [chatbotWidget, setChatbotWidget] = useState("");
+
+  useEffect(() => {
+    (function (w, d, s, o, f, js, fjs) {
+      w["botsonic_widget"] = o;
+      w[o] =
+        w[o] ||
+        function () {
+          (w[o].q = w[o].q || []).push(arguments);
+        };
+      (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+      js.id = o;
+      js.src = f;
+      js.async = 1;
+      fjs.parentNode.insertBefore(js, fjs);
+    })(
+      window,
+      document,
+      "script",
+      "Botsonic",
+      "https://widget.writesonic.com/CDN/botsonic.min.js"
+    );
+
+    Botsonic("init", {
+      serviceBaseUrl: "https://api.botsonic.ai/v1/botsonic/generate",
+      token: "03342397-cb53-45b1-b842-ce9e0f7c6032",
+    });
+
+    // Open the chatbot when the component mounts
+    Botsonic("open");
+  }, []);
 
   const handleSearch = async () => {
     try {
@@ -14,7 +46,6 @@ function News() {
       if (response.ok) {
         const data = await response.json();
         if (Array.isArray(data.feed)) {
-          // Extract title, url, banner_image, and overall_sentiment_label from each item in the feed
           const formattedResults = data.feed.map((item) => ({
             title: item.title,
             url: item.url,
@@ -38,70 +69,74 @@ function News() {
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
   };
+
   return (
     <>
-      <div className="bg-black w-1/2 rounded-[3px] h-28 px-3 pt-2">
-        <h1 className="text-white">YOUE DAILY UPDATES ARE HERE!</h1>
+      <div className="bg-black w-2/3 rounded-[3px] h-28 px-3 pt-2">
+        <h1 className="text-white text-2xl">Your daily updates are here!</h1>
         <input
-          className="w-[72.66%] h-[42.33px] rounded-[40px]  bg-zinc-300 mt-6 pl-4 "
+          className="w-[72.66%] h-[35.33px] rounded-[40px]  bg-zinc-300 mt-4 pl-4 "
           type="text"
           placeholder="Search"
           value={searchQuery}
           onChange={handleChange}
         />
         <button
-          className="w-[140.25px] h-[42.33px] bg-zinc-300 rounded-[40px] ml-10"
+          className="w-[140.25px] h-[35.33px] rounded-[40px]  bg-zinc-300 mt-4  ml-10"
           onClick={handleSearch}
         >
           Search
         </button>
       </div>
-      <div className="bg-slate-400 w-1/2">
+      <div className="w-2/3">
         {searchResults.map((newsItem, index) => (
-          <div key={index}>
-            <div className="flex">
-              <h2 className="">
-                <a
-                  href={newsItem.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {newsItem.title}
-                </a>
+          <div key={index} className="flex mb-4">
+            <div className="w-3/4 pr-4">
+              <h2 className="text-xl font-semibold mb-2">
+                <div className="ml-10">
+                  <a
+                    href={newsItem.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline hover:text-blue-700"
+                  >
+                    {newsItem.title}
+                  </a>
+                </div>
               </h2>
-              <div className="w-[300px] h-[150px] ml-20">
-                <img className="h-[150px]" src={newsItem.banner_image} alt={newsItem.title} />{" "}
+              <p>{newsItem.overall_sentiment_label}</p>
+              <div>
+                <button
+                  className={`${
+                        newsItem.overall_sentiment_label === "Bullish" ? "highlight ml-10" : ""
+                    } ml-10`}
+                  >
+                  Buy
+                </button>
+                <button
+                  className={`${
+                        newsItem.overall_sentiment_label === "Bullish" ? "highlight ml-10" : ""
+                    } ml-10`}
+                >
+                  Sell
+                </button>
+                <button
+                  className={`${
+                    newsItem.overall_sentiment_label === "Neutral"
+                      ? "highlight"
+                      : ""
+                  }ml-10` }
+                >
+                  Hold
+                </button>
               </div>
             </div>
-            <p>{newsItem.overall_sentiment_label}</p>
-            <div>
-              <button
-                className={
-                  newsItem.overall_sentiment_label === "Bullish"
-                    ? "highlight"
-                    : ""
-                }
-              >
-                Buy
-              </button>
-              <button
-                className={
-                  newsItem.overall_sentiment_label === "Bearish"
-                    ? "highlight"
-                    : ""
-                }
-              >
-                Sell
-              </button>
-              <button
-                className={
-                  newsItem.overall_sentiment_label === "Neutral"
-                    ? "highlight"
-                    : ""
-                }
-              >
-                Hold
-              </button>
+            <div className="w-1/4">
+              <img
+                className="h-auto w-full "
+                src={newsItem.banner_image}
+                alt={newsItem.title}
+              />
             </div>
           </div>
         ))}
