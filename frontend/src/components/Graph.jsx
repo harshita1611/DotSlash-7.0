@@ -17,7 +17,7 @@ class Graph extends Component {
   }
   
   fetchCSVData() {
-    fetch('../src/components/AAPL.csv')
+    fetch('')
       .then((response) => response.text())
       .then((csvData) => {
         this.parseCSVData(csvData);
