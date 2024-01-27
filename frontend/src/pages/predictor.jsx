@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../components/navbar';
 
 function Predictor() {
     const [companyName, setCompanyName] = useState('');
@@ -36,30 +37,44 @@ function Predictor() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="company name"
-                    className='border-2 solid black'
-                    value={companyName}
-                    onChange={handleChange}
-                />
-                <button type="submit">Submit</button>
-            </form>
-            {prediction !== null && (
-            <div>
-                <h2>Prediction:</h2>
-                <p>Action: {prediction.Action}</p>
-                <p>Current Stock Price: {prediction["Current Stock Price"]}</p>
-                <p>Predicted Stock Price: {prediction["Predicted Stock Price"]}</p>
-                <p>Accuracy Score: {prediction["Accuracy Score"]}</p>
-                <p>Mean Squared Error: {prediction["Mean Squared Error"]}</p>
+            <Navbar />
+            <div className="flex">
+                {/* Left panel */}
+                <div className="w-1/4 bg-gray-200 p-4">
+                    <h2 className="text-lg font-semibold mb-4">Communities</h2>
+                    <ul>
+                        {/* List of communities */}
+                        <li className="mb-2">Community 1</li>
+                        <li className="mb-2">Community 2</li>
+                        <li className="mb-2">Community 3</li>
+                        {/* Add more communities */}
+                    </ul>
+                </div>
+                {/* Right panel */}
+                <div className="w-3/4 p-4">
+                    <form onSubmit={handleSubmit} className="mb-4">
+                        <input
+                            type="text"
+                            placeholder="Enter company name"
+                            className="border border-gray-300 rounded p-2 mr-2"
+                            value={companyName}
+                            onChange={handleChange}
+                        />
+                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+                    </form>
+                    {/* Display prediction */}
+                    {prediction && (
+                        <div className="border border-gray-300 rounded p-4">
+                            <h2 className="text-lg font-semibold mb-2">Prediction</h2>
+                            <p>Current Stock Price: {prediction["Current Stock Price"]}</p>
+                            <p>Predicted Stock Price: {prediction["Predicted Stock Price"]}</p>
+                            {/* Display additional prediction data */}
+                        </div>
+                    )}
+                </div>
             </div>
-)}
-
         </div>
     );
-
 }
 
 export default Predictor;
