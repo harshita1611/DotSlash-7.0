@@ -12,7 +12,7 @@ function Dashboard() {
             .then(response => response.json())
             .then(data => {
                 if (data && data.topGainersList && data.topLosersList) {
-                    setTopGainers(data.topGainersList);
+                    setTopGainers(data.topGainersList);  
                     setTopLosers(data.topLosersList);
                 }
             })

@@ -34,30 +34,46 @@ function News() {
       setLoading(false);
     }
   };
-  
-  
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
   };
   return (
-    <div>
-      <h1>News</h1>
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchQuery}
-        onChange={handleChange}
-      />
-      <button onClick={handleSearch}>Search</button>
-      <div>
+    <>
+      <div className="bg-black w-1/2 rounded-[3px] h-28 px-3 pt-2">
+        <h1 className="text-white">YOUE DAILY UPDATES ARE HERE!</h1>
+        <input
+          className="w-[72.66%] h-[42.33px] rounded-[40px]  bg-zinc-300 mt-6 pl-4 "
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleChange}
+        />
+        <button
+          className="w-[140.25px] h-[42.33px] bg-zinc-300 rounded-[40px] ml-10"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+      </div>
+      <div className="bg-slate-400 w-1/2">
         {searchResults.map((newsItem, index) => (
           <div key={index}>
-            <h2>{newsItem.title}</h2>
-            <p>{newsItem.url}</p>
-            <img src={newsItem.banner_image} alt={newsItem.title} />
+            <div className="flex">
+              <h2 className="">
+                <a
+                  href={newsItem.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {newsItem.title}
+                </a>
+              </h2>
+              <div className="w-[300px] h-[150px] ml-20">
+                <img className="h-[150px]" src={newsItem.banner_image} alt={newsItem.title} />{" "}
+              </div>
+            </div>
             <p>{newsItem.overall_sentiment_label}</p>
-            {/* Render buttons based on sentiment label */}
             <div>
               <button
                 className={
@@ -90,7 +106,8 @@ function News() {
           </div>
         ))}
       </div>
-    </div>
-  )};
+    </>
+  );
+}
 
 export default News;
