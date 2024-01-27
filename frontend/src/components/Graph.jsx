@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
 import Papa from 'papaparse';
 
+
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class Graph extends Component {
@@ -17,9 +18,10 @@ class Graph extends Component {
   }
   
   fetchCSVData() {
-    fetch('')
+    fetch('../public/datasets/daily/AAPL.csv')
       .then((response) => response.text())
       .then((csvData) => {
+        console.log('CSV Data:', csvData); 
         this.parseCSVData(csvData);
       })
       .catch((error) => {
