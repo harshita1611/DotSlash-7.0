@@ -13,11 +13,11 @@ function App() {
     <>
       {/* <Login/> */}
       {/* <Landing/> */}
-      <NewsAndAi/>
         <Router>
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/newsAndAi" element={<NewsAndAi />} />
         </Routes>
       </Router>
     </>
