@@ -1,11 +1,13 @@
 
 import './App.css'
-
+// import Login from '../src/pages/login.jsx'
+import Landing from '../src/pages/landing.jsx'
 function App() {
 
   return (
     <>
-      <div className='bg-red-200'>Meow</div>
+      {/* <Login/> */}
+      <Landing/>
     </>
   )
 }
