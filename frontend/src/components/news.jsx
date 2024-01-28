@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 function News() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,7 +33,6 @@ function News() {
       token: "03342397-cb53-45b1-b842-ce9e0f7c6032",
     });
 
-    // Open the chatbot when the component mounts
     Botsonic("open");
   }, []);
 
@@ -90,7 +89,7 @@ function News() {
       </div>
       <div className="w-2/3">
         {searchResults.map((newsItem, index) => (
-          <div key={index} className="flex mb-4">
+          <div key={index} className="flex mb-4 mt-5">
             <div className="w-3/4 pr-4">
               <h2 className="text-xl font-semibold mb-2">
                 <div className="ml-10">
@@ -98,34 +97,40 @@ function News() {
                     href={newsItem.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline hover:text-blue-700"
+                    className="text-black-500 hover:underline hover:text-blue-700"
                   >
                     {newsItem.title}
                   </a>
                 </div>
               </h2>
-              <p>{newsItem.overall_sentiment_label}</p>
-              <div>
+              <p className="font-semibold pl-9 mt-10 opacity-75">
+                Sentiment: {newsItem.overall_sentiment_label}
+              </p>
+              <div className="mt-8">
                 <button
                   className={`${
-                        newsItem.overall_sentiment_label === "Bullish" ? "highlight ml-10" : ""
-                    } ml-10`}
-                  >
+                    newsItem.overall_sentiment_label === "Bullish" || newsItem.overall_sentiment_label === "Somewhat-Bullish"
+                    ? "highlight border-green-500"
+                      : "border-solid border-2 border-black"
+                  } ml-10 border-solid border-2 border-black w-20 h-10 rounded-md mx-3`}
+                >
                   Buy
                 </button>
                 <button
                   className={`${
-                        newsItem.overall_sentiment_label === "Bullish" ? "highlight ml-10" : ""
-                    } ml-10`}
+                    newsItem.overall_sentiment_label === "Bearish" || newsItem.overall_sentiment_label === "Somewhat_Bearish"
+                      ?"highlight border-red-500"
+                      : "border-solid border-2 border-black"
+                  } ml-10 border-solid border-2 border-black w-20 h-10 rounded-md mx-3`}
                 >
                   Sell
                 </button>
                 <button
                   className={`${
                     newsItem.overall_sentiment_label === "Neutral"
-                      ? "highlight"
-                      : ""
-                  }ml-10` }
+                      ? "highlight border-blue-500"
+                      : "border-solid border-2 border-black"
+                  }ml-10 border-solid border-2 border-black w-20 h-10 rounded-md mx-12`}
                 >
                   Hold
                 </button>
