@@ -4,9 +4,9 @@ function Navbar() {
   return (
     <>
       <div className="20">
-        <div className="flex justify-between p-7 pl-10 pr-10 text-xl items-center h-28">
+        <div className="flex justify-between pr-10 text-xl items-center h-28">
           <div>
-            <img src="./src/assets/navbar-logo.png" alt="logo" className="mt-9"/>
+            <img src="./src/assets/navbar-logo.png" alt="logo" className="mt-9 -ml-10"/>
           </div>
 
           <div className="flex gap-10">
