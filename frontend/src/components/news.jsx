@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import axios from "axios";
+import stocks from "../assets/stock.js"
 
 function News() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,6 +40,7 @@ function News() {
   const handleSearch = async () => {
     try {
       setLoading(true);
+      console.log(stocks)
       const response = await fetch(
         `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchQuery}&apikey=demo`
       );
