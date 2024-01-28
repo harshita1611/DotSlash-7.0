@@ -18,7 +18,7 @@ function Landing() {
             alt="Your Image"
           />
 
-          <span className="text-xl">abcjdfnjkdsfjlkfjksfjhsjfhiwehufwejhfdehsfuieshfjshdfiueofjhiusedfjc</span>
+          <span className="text-xl">Accurate stock predictions and sentiment analysis for savvy investors.</span>
           <WebSiteDescription />
         
           <button className="text-white text-2xl font-bold whitespace-nowrap bg-black justify-center items-stretch mt-10 px-7 py-3.5 rounded-[30px] max-md:px-5">
