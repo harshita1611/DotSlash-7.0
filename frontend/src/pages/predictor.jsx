@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 
+
 function Predictor() {
   const [companyName, setCompanyName] = useState("");
   const [prediction, setPrediction] = useState(null);
