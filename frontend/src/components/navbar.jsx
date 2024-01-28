@@ -20,9 +20,10 @@ function Navbar() {
             <Link to="/news">Chatbot</Link>
           </div>
           
-          <div className="bg-black text-white p-2 pl-3 pr-4 rounded-3xl">
-            Get Started
-          </div>
+            <div className="bg-black text-white p-2 pl-3 pr-4 rounded-3xl">
+              Get Started
+            </div>
+          
         </div>
         <hr className="border-black opacity-25"></hr>
       </div>

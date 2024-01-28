@@ -1,52 +1,110 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 
+function Form() {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    contact: "",
+    address: "",
+    age: "",
+  });
 
-function SignupForm() {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("User registration successful");
+        // Handle success case
+      } else {
+        console.error("Failed to register user");
+        // Handle error case
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+      // Handle error case
+    }
+  };
+
   return (
-    <form className="flex flex-col self-stretch items-stretch text-l font-medium mx-6 w-1/2">
-      <header className="text-slate-950 text-3xl italic font-semibold">
-        ForeCost
-      </header>
-      <div className="shadow-slate-800">
-      <div className="text-black text-opacity-50 mt-14 text-xl ">
-        Username
-      </div>
-      <div className="bg-indigo-600 shrink-0 h-[3px] mt-8" />
-      <div className="text-black text-opacity-60 mt-12 ">
-        Email Id
-      </div>
-      <div className="bg-blue-700 shrink-0 h-[3px] mt-11 " />
-      <div className="text-black text-opacity-60 mt-14 ">
-        Password
-      </div>
-     <div className="aspect-[1.37] object-contain object-center w-[26px] fill-slate-950 mt-3.5 self-end">
-        <FaEye/>
-     </div>
-      <div className="bg-blue-700 shrink-0 h-[3px] mt-2" />
-      <button
-        type="submit"
-        className="text-white text-2xl font-medium whitespace-nowrap bg-slate-950 justify-center items-center mt-16 px-16 py-4 rounded-[30px] border-[3px] border-solid border-white"
-      >
-        Sign Up
-      </button>
-      <div className="text-black text-center text-2xl font-semibold self-center mt-7">
-        OR
-      </div>
-      <div className="bg-white border flex flex-col justify-center items-center mt-6 px-16 py-4 rounded-[200px] border-solid border-black max-md:px-5">
-        <div className="flex items-stretch justify-between gap-5">
-        <div className="aspect-[1.37] object-contain object-center w-[26px] fill-slate-950 mt-3.5 self-end">
-        <FaGoogle />
-     </div>
-          <div className="text-black text-center text-xl font-semibold grow shrink basis-auto mt-3.5 self-start">
-            Sign in with Google
-          </div>
+    <div className="flex gap-10">
+      <form onSubmit={handleSubmit} className="bg-white ml-10 rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-1/2">
+        <div className="flex flex-col">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            className="border-gray-300 border-2 w-full h-18 rounded-xl p-3 mt-10"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="border-gray-300 border-2 w-full h-18 rounded-xl p-3 mt-10"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="border-gray-300 border-2 w-full h-18 rounded-xl p-3 mt-10"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="contact"
+            placeholder="Contact"
+            className="border-gray-300 border-2 w-full h-18 rounded-xl p-3 mt-10"
+            value={formData.contact}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            className="border-gray-300 border-2 w-full h-18 rounded-xl p-3 mt-10"
+            value={formData.address}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="age"
+            placeholder="Age"
+            className="border-gray-300 border-2 w-full h-18 rounded-xl p-3 mt-10"
+            value={formData.age}
+            onChange={handleChange}
+          />
         </div>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded mt-6 w-full h-18">Sign Up</button>
+        <div className="ml-72 mt-3 -mb-3">OR</div>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded mt-6 w-full h-18">Sign in with Google</button>
+      </form>
+      <div className="w-1/2 ">
+        <img src="../src/assets/final_image.jpeg" alt="" className=" h-full" />
       </div>
-      </div>
-    </form>
+    </div>
   );
 }
 
-export default SignupForm;
+export default Form;
