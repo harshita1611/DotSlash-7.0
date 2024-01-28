@@ -32,6 +32,10 @@ function Dashboard() {
     setSelectedCSV(csv);
   };
 
+  const handleButtonClick = () => {
+    window.location.href = "/news";
+  }
+
   return (
     <div>
       <Navbar />
@@ -174,9 +178,10 @@ function Dashboard() {
                Nearly 30 companies have already received a green signal from the regulator, aimed at raising over Rs 30,000 crore. Meanwhile, about 40 other companies have submitted their DRHPs for approval.
               </p>
 
-              <button className="bg-blue-200 p-4 rounded-2xl mt-5">
+              <button className="bg-blue-200 p-4 rounded-2xl mt-5" onClick={handleButtonClick}>
                 {" "}
                 Check all upadtes
+
               </button>
             </div>
           </div>
