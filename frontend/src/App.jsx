@@ -1,5 +1,5 @@
 import './App.css'
-// import Login from '../src/pages/login.jsx'
+import Login from '../src/pages/login.jsx'
 import Landing from '../src/pages/landing.jsx'
 import NewsAndAi from '../src/pages/newsAndAi.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -21,6 +21,7 @@ function App() {
           <Route path="/news" element={<NewsAndAi />} />
           <Route path="/predictor" element={<Predictor/>} />
           <Route path="/register" element={<SignUp/>} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </Router>
     </>
