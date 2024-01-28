@@ -35,15 +35,21 @@ function News() {
     });
 
     Botsonic("open");
+    handleSearch();
   }, []);
 
   const handleSearch = async () => {
     try {
       setLoading(true);
-      console.log(stocks)
+      // console.log(stocks)
+      let apiUrl;
+
+      if (searchQuery.trim() === "") {
+        apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=demo`;
+      } else {
+        apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchQuery}&apikey=demo`;}
       const response = await fetch(
-        `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchQuery}&apikey=demo`
-      );
+        apiUrl);
       if (response.ok) {
         const data = await response.json();
         if (Array.isArray(data.feed)) {
