@@ -92,15 +92,14 @@ function Predictor() {
               Submit
             </button>
           </form>
-          {/* Display prediction */}
           {prediction && (
-            <div className="border border-gray-300 rounded p-4">
+            <div className="border border-gray-300 rounded p-4 text-white">
               <h2 className="text-lg font-semibold mb-2">Prediction</h2>
               <p>Current Stock Price: {prediction["Current Stock Price"]}</p>
               <p>
                 Predicted Stock Price: {prediction["Predicted Stock Price"]}
               </p>
-              {/* Display additional prediction data */}
+              <p>Action: {prediction.Action}</p>
             </div>
           )}
         </div>
