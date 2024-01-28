@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Login() {
     return (
         <div>
-            <Link to="/dashboard"><Form/></Link>
+            <Form/>
         </div>
     )
 }
