@@ -144,7 +144,7 @@ function Dashboard() {
               </button>
             </div>
           </div>
-          <Graph selectedTicker={selectedCSV} />
+          <Graph selectedTicker={selectedCSV || "AAPL"} />
         </div>
         <div style={{ flex: "1" }}>
         <h2 className="text-2xl font-semibold mb-4">Top Gainers</h2>
