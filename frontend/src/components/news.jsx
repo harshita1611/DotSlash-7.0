@@ -47,7 +47,8 @@ function News() {
       if (searchQuery.trim() === "") {
         apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=demo`;
       } else {
-        apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchQuery}&apikey=demo`;}
+        // api_key="3F7UWPK9PJHIE5TI"
+        apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchQuery}&apikey="3F7UWPK9PJHIE5TI"`;}
       const response = await fetch(
         apiUrl);
       if (response.ok) {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -96,7 +97,7 @@ function Form() {
             onChange={handleChange}
           />
         </div>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded mt-6 w-full h-18">Sign Up</button>
+        <button to="/login" className="bg-blue-500 text-white px-4 py-2 rounded mt-6 w-full h-18">Sign Up</button>
         <div className="ml-72 mt-3 -mb-3">OR</div>
         <button className="bg-blue-500 text-white px-4 py-2 rounded mt-6 w-full h-18">Sign in with Google</button>
       </form>
