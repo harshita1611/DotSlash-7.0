@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Graph from "../components/Graph";
 import Navbar from "../components/navbar";
 import Typist from "react-typist";
+import SearchBar from "../components/SearchBar";
 
 function Dashboard() {
   const [topGainers, setTopGainers] = useState([]);
@@ -34,7 +35,7 @@ function Dashboard() {
 
   const handleButtonClick = () => {
     window.location.href = "/news";
-  }
+  };
 
   return (
     <div>
@@ -48,8 +49,8 @@ function Dashboard() {
                 We are here for you! Here are your choice of stocks:
               </p>
             </Typist>
-
             <div>
+              <SearchBar />
               <button
                 onClick={() => handleCSVSelect("AAPL")}
                 className="p-2 rounded-md mr-2  border-solid border-2 border-black transform transition-transform hover:-translate-y-1 active:-translate-y-2 "
@@ -151,7 +152,7 @@ function Dashboard() {
           <Graph selectedTicker={selectedCSV || "AAPL"} />
         </div>
         <div style={{ flex: "1" }}>
-        <h2 className="text-2xl font-semibold mb-4">Top Gainers</h2>
+          <h2 className="text-2xl font-semibold mb-4">Top Gainers</h2>
           <div className="flex gap-4">
             {topGainers.slice(0, 2).map((gainer, index) => (
               <div key={index} className="bg-green-200 p-4 rounded-md w-32">
@@ -171,17 +172,24 @@ function Dashboard() {
               </div>
             ))}
           </div>
-          <h2 className="mt-4 text-2xl font-semibold mb-4">Want news upadtes?</h2>
+          <h2 className="mt-4 text-2xl font-semibold mb-4">
+            Want news upadtes?
+          </h2>
           <div className="flex gap-4">
             <div>
               <p className="opacity-90 font-regular">
-               Nearly 30 companies have already received a green signal from the regulator, aimed at raising over Rs 30,000 crore. Meanwhile, about 40 other companies have submitted their DRHPs for approval.
+                Nearly 30 companies have already received a green signal from
+                the regulator, aimed at raising over Rs 30,000 crore. Meanwhile,
+                about 40 other companies have submitted their DRHPs for
+                approval.
               </p>
 
-              <button className="bg-blue-200 p-4 rounded-2xl mt-5" onClick={handleButtonClick}>
+              <button
+                className="bg-blue-200 p-4 rounded-2xl mt-5"
+                onClick={handleButtonClick}
+              >
                 {" "}
                 Check all upadtes
-
               </button>
             </div>
           </div>
@@ -189,6 +197,6 @@ function Dashboard() {
       </div>
     </div>
   );
-} 
+}
 
 export default Dashboard;
