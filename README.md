@@ -3,7 +3,7 @@
 
 #### Stock Predictor Web Application
 
-This project is a web application that provides a platform for users to check cureent price of stocks,view stock predictions, news, and use chatbot for stock related queries. 
+A web application providing a platform for users to check the current price of stocks, view stock predictions, news, and graphical visualizations of stock data.
 
 
 ### Pages
