@@ -47,10 +47,17 @@ function News() {
       if (searchQuery.trim() === "") {
         apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=AAPL&apikey=demo`;
       } else {
-        // api_key="3F7UWPK9PJHIE5TI"
-        apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${searchQuery}&apikey="3F7UWPK9PJHIE5TI"`;}
-      const response = await fetch(
-        apiUrl);
+        const ticker = Object.keys(stocks).find(key => key.includes(searchQuery.trim()));
+
+        if (!ticker) {
+          console.error(`No ticker found for company: ${searchQuery}`);
+          return;
+        }
+
+        apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${stocks[ticker]}&apikey="3F7UWPK9PJHIE5TI"`;
+      }
+
+      const response = await fetch(apiUrl);
       if (response.ok) {
         const data = await response.json();
         if (Array.isArray(data.feed)) {
