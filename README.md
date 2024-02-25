@@ -11,7 +11,7 @@ A web application providing a platform for users to check the current price of s
 <!-- display landing page image  -->
 ![Landing Page](./images/LadingPage.webp)
 
--Then we have a dashboard Page in which first we display the graph of listed companies, on the right side we show the top gainers and losers of the day and then we give a redirection to news page for checking the sentiment analysis
+-Then we have a dashboard Page in which first we display the graph of listed companies, on the right side we show the top gainers and losers of the day and then we give a redirection to news page for checking the sentiment analysis. Also the main feature of this page is that you can store the image of graph in jpg or png format.
 ![Dashboard](./images/Dashboard.png)
 
 - News Page This page contains the latest news and AI predictions for the stocks, for now you can search using tickers and we will show the news and predictions for that stock. It tells you sentiment of the news
